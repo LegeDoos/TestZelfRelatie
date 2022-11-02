@@ -22,9 +22,13 @@ namespace TestZelfRelatie.Controllers
         // GET: RoutePoints
         public async Task<IActionResult> Index()
         {
+            // test relations v2 data, data vanuit routepoint ophalen
+            var datatest = await _context.RoutePointsV2.Include(rel => rel.IncomingRelations).Include(rel => rel.OutgoingRelations).ToListAsync();
+
+            // get original data
             var data = await _context.RoutePoints.Include(r => r.OutgoingRelation)
                   .Include(r => r.IncomingRelation).ToListAsync();
-              return View(data);
+            return View(data);
         }
 
         
