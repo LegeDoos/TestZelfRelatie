@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TestZelfRelatie.Data;
 
@@ -11,9 +12,10 @@ using TestZelfRelatie.Data;
 namespace TestZelfRelatie.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221103100125_GebouwLokaal")]
+    partial class GebouwLokaal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -247,7 +249,7 @@ namespace TestZelfRelatie.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GebouwId"), 1L, 1);
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Omschrijving")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("GebouwId");
@@ -263,11 +265,11 @@ namespace TestZelfRelatie.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LokaalId"), 1L, 1);
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("GebouwId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Omschrijving")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("LokaalId");
 

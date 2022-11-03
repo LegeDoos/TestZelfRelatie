@@ -17,6 +17,8 @@ namespace TestZelfRelatie.Data
         public DbSet<RoutePoint> RoutePoints { get; set; }
         public DbSet<RoutePointV2> RoutePointsV2 { get; set; }
 
+        public DbSet<Gebouw> Gebouwen { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -53,6 +55,8 @@ namespace TestZelfRelatie.Data
             modelBuilder.Entity<RoutePoint>().HasData(c);
             modelBuilder.Entity<RoutePoint>().HasData(d);
         }
+
+        public DbSet<TestZelfRelatie.Models.Lokaal> Lokaal { get; set; }
 
     }
 }
